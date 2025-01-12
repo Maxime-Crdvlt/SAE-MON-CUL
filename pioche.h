@@ -13,7 +13,6 @@ void remplirPioche(Vecteur* pioche);
 /**
  * @brief Mélange la pioche
  * @param[in] pioche  La pioche qu'il faut mélanger
- * @return 0 en cas d'échec et 1 en cas de succès.
  */
 void melangerPioche(Vecteur* pioche);
 
@@ -22,6 +21,5 @@ void melangerPioche(Vecteur* pioche);
 * @param[in] pioche La pioche qu'il faut distribuer  
 * @param[in] joueur1 Le premier joueur a qui il faut distribuer
 * @param[in] joueur2 Le deuxième joueur a qui il faut distribuer
-* @return 0 en cas d'échec et 1 en cas de succès.
 */
 void distribuerPioche(Vecteur* pioche, Vecteur* joueur1, Vecteur* joueur2);

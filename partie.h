@@ -5,15 +5,9 @@
  * @brief Echanges le chevalet que le joueur à voulu avec un chevalet aléatoire de la pioche
  * @param[in] joueur Le vecteur joueur qui échange le chevalet
  * @param[in] chevalet Le caractères qui représente le chevalet échangé
+ * return 1 si le chevalet est bien dans la main du joueur ou 0 sinon
  */
 int echangerChevalet(Vecteur* joueur, Vecteur* pioche);
-
-/**
- * @brief Demande la commande que veut faire le joueur
- * @param[in] joueur Le vecteur joueur qui va entrer sa commande
- * @param[in] numero_joueur Le numéro du joueur qui va entrer sa commande
- */
-int entrerCoup(Vecteur* joueur, Vecteur* pioche, int numero_joueur);
 
 /**
  * @brief Affiches la situation actuelle de la partie

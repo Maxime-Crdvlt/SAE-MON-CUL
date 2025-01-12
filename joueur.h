@@ -20,5 +20,6 @@ int comparerChevalets(const void* a, const void* b);
 * @param[in] numero Le numéro du joueur (1 ou 2)  
 * @param[in] tailleMin La taille minimale du mot attendue
 * @param[in] tailleMax La taille maximale du mot attendue
+* return Le mot entré par le joueur
 */
 char* demanderPreMot(Vecteur* joueur, Vecteur* rail, int numero);

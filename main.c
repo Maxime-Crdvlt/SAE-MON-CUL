@@ -64,7 +64,6 @@ int main() {
 		tour = 1; // La partie commencera par le joueur 1 par défaut
 	}
 	inverserRail(&rail_recto, &rail_verso);
-	printf("\n");
 	afficherSituation(&joueur1, &joueur2, &rail_recto, &rail_verso);
 
 	// Continuité du jeux
@@ -82,34 +81,39 @@ int main() {
 					if (echangerChevalet(&joueur1, &pioche) == 1)
 						coup = 1;
 					else
-						coup = 0;
+						break;
 				}
 				else if (commande == 'r' || commande == 'v') {
 					//signalerMot();
 				}
 			} while (coup != 1);
+			qsort(joueur1.elements, joueur1.nbElements, sizeof(char), comparerChevalets);
+			qsort(joueur2.elements, joueur2.nbElements, sizeof(char), comparerChevalets);
 			afficherSituation(&joueur1, &joueur2, &rail_recto, &rail_verso);
+			tour = 2;
 		}
 		else {
 			do {
 				printf("%d> ", tour);
 				char commande;
-				scanf("%c", &commande);
-				if (strcmp(&commande, "R") == 0 || strcmp(&commande, "V") == 0) {
+				scanf(" %c", &commande);
+				if (commande == 'R' || commande == 'V') {
 					//proposerMot(joueur);
 				}
-				else if (strcmp(&commande, "-") == 0) {
+				else if (commande == '-') {
 					if (echangerChevalet(&joueur2, &pioche) == 1)
 						coup = 1;
 					else
-						coup = 0;
+						break;
 				}
-				else if (strcmp(&commande, "r") == 0 || strcmp(&commande, "v") == 0) {
+				else if (commande == 'r' || commande == 'v') {
 					//signalerMot();
 				}
 			} while (coup != 1);
+			qsort(joueur1.elements, joueur1.nbElements, sizeof(char), comparerChevalets);
+			qsort(joueur2.elements, joueur2.nbElements, sizeof(char), comparerChevalets);
 			afficherSituation(&joueur1, &joueur2, &rail_recto, &rail_verso);
+			tour = 1;
 		}
-		tour = (tour == 1) ? tour = 2 : 1;
 	} while (verifierVictoire(&joueur1, &joueur2) == 0);
 }

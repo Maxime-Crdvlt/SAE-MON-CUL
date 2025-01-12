@@ -1,6 +1,4 @@
 #include "partie.h"
-#include "joueur.h"
-#include "rail.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,20 +8,19 @@
 #pragma warning(disable: 4996)
 
 int echangerChevalet(Vecteur* joueur, Vecteur* pioche) {
-    char lettre;
-    scanf("%c", &lettre);
+    char* lettre = (char*)malloc(sizeof(char));
+    scanf(" %s", lettre);
     srand(time(NULL));
-    if (verifierMain(&lettre, joueur) == 1) {
-        int indice = 0;
+    if (verifierMain(lettre, joueur) == 1) {
+        int indice = -1;
         for (int i = 0; i < joueur->nbElements; i++) {
-            if (strcmp(joueur->elements[i], &lettre) == 0) {
+            if (joueur->elements[i] == lettre[0]) {
                 indice = i;
                 break;
             }
         }
         supprimer(joueur, indice);
-        retailler(joueur, taille(joueur));
-        ajouter(joueur, pioche->elements[rand() % (pioche->nbElements)]);
+        ajouter(joueur, pioche->elements[rand() % pioche->nbElements]);
         ajouter(pioche, lettre);
         retailler(joueur, taille(joueur));
         retailler(pioche, taille(pioche));
@@ -35,6 +32,7 @@ int echangerChevalet(Vecteur* joueur, Vecteur* pioche) {
 }
 
 void afficherSituation(Vecteur* joueur1, Vecteur* joueur2, Vecteur* rail_recto, Vecteur* rail_verso) {
+    printf("\n");
     printf("1 : ");
     afficherVecteur(joueur1);
     printf("2 : ");
@@ -57,6 +55,7 @@ int verifierDico(char* motJoueur) {
     n = fscanf(fichier, "%8s", motDico);
     while (n == 1) {
         if (strcmp(motDico, motJoueur) == 0) {
+            // Code à intégrer
             return 1; // Mot trouvé
         }
         n = fscanf(fichier, "%8s", motDico);

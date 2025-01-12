@@ -22,15 +22,12 @@ char* demanderPreMot(Vecteur* joueur, Vecteur* rail, int numero) {
         scanf("%s", motJoueur);
         size_t taille_mot = strlen(motJoueur);
         if (taille_mot < TAILLE_PRE_MOT || taille_mot > TAILLE_PRE_MOT) {
-            printf("Erreur : le mot n'a pas la bonne taille \n");
             continue;
         }
         else if (verifierDico(motJoueur) == 0) {
-            printf("Erreur : le mot n'est pas dans le dictionnaire \n");
             continue;
         }
         else if (verifierMain(motJoueur, joueur) == 0) {
-            printf("Erreur : il manque une lettre \n");
             continue;
         }
         else {
